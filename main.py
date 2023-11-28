@@ -16,12 +16,11 @@ while turned_on:
     elif request == "report":
         coffee_masina.report()
         money_masina.report()
-    # Validation for valid drink name
-    elif menu.find_drink(request) is None:
-        continue
     # Check what is required for chosen drink
     else:
         menu_item = menu.find_drink(request)
-        if coffee_masina.is_resource_sufficient(menu_item):
-            if money_masina.make_payment(menu_item.cost):
-                coffee_masina.make_coffee(menu_item)
+        # Validation for valid drink name
+        if menu_item is None:
+            continue
+        elif coffee_masina.is_resource_sufficient(menu_item) and money_masina.make_payment(menu_item.cost):
+            coffee_masina.make_coffee(menu_item)
