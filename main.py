@@ -9,7 +9,8 @@ coffee_masina = CoffeeMaker()
 money_masina = MoneyMachine()
 
 while turned_on:
-    request = input("What would you like? (espresso/latte/cappuccino): ")
+    options = menu.get_items()
+    request = input(f"What would you like? ({options}): ")
     if request == "off":
         turned_on = False
     # When the user enters “report” to the prompt, a report should be generated
